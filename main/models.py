@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import IntegerField
 
 # Create your models here.
 class user_info(models.Model):
@@ -23,3 +24,15 @@ class request(models.Model):
   driver_evaluation = models.FloatField()
   client_evaluation = models.FloatField()
 
+class message(models.Model):
+  user_id = models.IntegerField(null=False)
+  post_id = models.IntegerField(null=False)
+  text = models.CharField(max_length=100, null=False)
+
+class payment(models.Model):
+  post_id = models.IntegerField()
+  payment_amount = models.IntegerField(null=False)
+
+class favorite(models.Model):
+  user_id = models.IntegerField(null=False)
+  post_id = models.IntegerField(null=False)

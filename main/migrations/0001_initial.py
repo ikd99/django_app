@@ -41,4 +41,6 @@ class Migration(migrations.Migration):
                 ('total_socore', models.FloatField(max_length=50)),
             ],
         ),
+
+        
     ]
