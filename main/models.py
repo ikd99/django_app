@@ -16,7 +16,7 @@ class request(models.Model):
   request_complete = models.IntegerField(default=0)
   share_or_not = models.IntegerField(default=0)
   post_time = models.DateTimeField()
-  text = models.CharField(max_length=100, null=False)
+  text = models.TextField(max_length=1000, null=False)
   departure_place = models.CharField(max_length=100)
   destination_place = models.CharField(max_length=100)
   delivery_date = models.CharField(max_length=50)
@@ -27,7 +27,7 @@ class request(models.Model):
 class message(models.Model):
   user_id = models.IntegerField(null=False)
   post_id = models.IntegerField(null=False)
-  text = models.CharField(max_length=100, null=False)
+  text = models.TextField(max_length=1000, null=False)
 
 class payment(models.Model):
   post_id = models.IntegerField()
