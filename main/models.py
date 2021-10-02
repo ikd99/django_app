@@ -11,7 +11,8 @@ class user_info(models.Model):
   total_socore = models.FloatField(max_length=50)
 
 class request(models.Model):
-  user_id = models.IntegerField()
+  client_id = models.ForeignKey(user_info, on_delete=models.CASCADE)
+  driver_id = models.ForeignKey(user_info, on_delete=models.SET_NULL)
   title = models.CharField(max_length=100, null=False)
   matching_complete = models.BooleanField(default=False)
   request_complete = models.BooleanField(default=False)
@@ -26,14 +27,14 @@ class request(models.Model):
   client_evaluation = models.FloatField()
 
 class message(models.Model):
-  user_id = models.IntegerField(null=False)
-  post_id = models.IntegerField(null=False)
+  user_id = models.ForeignKey(user_info, on_delete=models.SET_NULL)
+  post_id = models.ForeignKey(request, on_delete=models.CASCADE)
   text = models.TextField(max_length=1000, null=False)
 
 class payment(models.Model):
-  post_id = models.IntegerField(null=False)
+  post_id = models.ForeignKey(request, on_delete=models.PROTECT)
   payment_amount = models.IntegerField(null=False)
 
 class favorite(models.Model):
-  user_id = models.IntegerField(null=False)
-  post_id = models.IntegerField(null=False)
+  user_id = models.ForeignKey(user_info, on_delete=models.CASCADE)
+  post_id = models.ForeignKey(request, on_delete=models.CASCADE)
