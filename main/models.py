@@ -12,7 +12,6 @@ class user_info(models.Model):
 
 class request(models.Model):
   client_id = models.ForeignKey(user_info, on_delete=models.CASCADE)
-  driver_id = models.ForeignKey(user_info, on_delete=models.SET_NULL)
   title = models.CharField(max_length=100, null=False)
   matching_complete = models.BooleanField(default=False)
   request_complete = models.BooleanField(default=False)
@@ -27,7 +26,7 @@ class request(models.Model):
   client_evaluation = models.FloatField()
 
 class message(models.Model):
-  user_id = models.ForeignKey(user_info, on_delete=models.SET_NULL)
+  user_id = models.ForeignKey(user_info, on_delete=models.SET_NULL, null=True)
   post_id = models.ForeignKey(request, on_delete=models.CASCADE)
   text = models.TextField(max_length=1000, null=False)
 
