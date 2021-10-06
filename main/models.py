@@ -20,7 +20,7 @@ class request(models.Model):
   text = models.TextField(max_length=1000, null=False)
   departure_place = models.CharField(max_length=100, null=False)
   destination_place = models.CharField(max_length=100, null=False)
-  delivery_date = models.CharField(max_length=50)
+  delivery_date = models.DateTimeField(null=False)
   asking_price = models.IntegerField(null=False)
   driver_evaluation = models.FloatField()
   client_evaluation = models.FloatField()
