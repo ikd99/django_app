@@ -1,0 +1,24 @@
+<!doctype html>
+{% load static %}
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>テストWebアプリ</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+    <script src="{% static 'javascript/sample.js' %}"></script>
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+    <table>
+      <form action="{% url 'main:post' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <tr>
+          <td></td>
+          <td><input type="submit" value="送信"></td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>

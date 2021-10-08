@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>チャット画面</title>
+  <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+
+<body>
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+  <table>
+    <form action="{% url 'main:chat' id %}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <tr>
+        <td></td>
+        <td><input type="submit" value="更新"></td>
+      </tr>
+    </form>
+
+    {% for chat in comment%}
+      <tr>
+        <td>{{ chat.mess }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+</body>
+
+</html>
